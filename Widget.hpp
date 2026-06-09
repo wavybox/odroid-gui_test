@@ -1,19 +1,22 @@
-#include "WString.h"
-#include <utility>
 #ifndef WIDGET_HPP
 #define WIDGET_HPP
 
 #include <odroid_go.h>
 #include <Arduino.h>
+#include <utility>
 
 #include "Catppuccin.hpp"
+#include "WString.h"
 
+// The border/margin size
 #define BORDER 4
 
+// For having to write less
 #define LCD GO.lcd
 
-
+// The main namespace for the widgets
 namespace Widget {
+  // The base widget, an abstract class that serves as a common interface for all of the widgets
   class BaseWidget {
     public:
       BaseWidget();
@@ -25,6 +28,7 @@ namespace Widget {
       int min_x, min_y = 0;
   };
 
+  // A basic single-color panel
   class Panel : public BaseWidget {
     public:
       void render(int x0, int y0, int x1, int y1) override;
@@ -34,6 +38,7 @@ namespace Widget {
       int min_x, min_y = 0;
   };
 
+  // An abstract base class for the SplitBoxes
   class SplitBoxBase : public BaseWidget {
     public:
       virtual void render(int x0, int y0, int x1, int y1) = 0;
@@ -42,16 +47,19 @@ namespace Widget {
       BaseWidget* child2;
   };
 
+  // Vertical SplitBox, divides the area given into two equally big areas
   class VSplitBox : public SplitBoxBase {
     public:
       void render(int x0, int y0, int x1, int y1) override;
   };
 
+  // Horizontal SplitBox, divides the area given into two equally big areas
   class HSplitBox : public SplitBoxBase {
     public:
       void render(int x0, int y0, int x1, int y1) override;
   };
 
+  // Text widget
   class Text : public BaseWidget {
     public:
       void render(int x0, int y0, int x1, int y1) override;

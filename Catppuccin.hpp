@@ -1,8 +1,10 @@
 #ifndef CATPPUCCIN_HPP
 #define CATPPUCCIN_HPP
 
+// Macro to convert RGB value into suitable uint16_t
 #define COLOR(r, g, b) ((r & 0xF8) << 8) | ((g & 0xFC) << 3) | (b >> 3)
 
+// The enum of the colors
 enum Colors {
   CAT_ROSEWATER = COLOR(245,  224,  220),
   CAT_FLAMINGO  = COLOR(242,  205,  205),
