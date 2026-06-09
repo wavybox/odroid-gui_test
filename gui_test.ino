@@ -25,6 +25,15 @@ void setup() {
 
   rPanel.setColor(CAT_BLUE);
 
+  Widget::Text text;
+  text.setText("Hello world!");
+  text.setBackColor(CAT_RED);
+  text.setFrontColor(CAT_CRUST);
+  text.setFont(2);
+  text.setSize(2);
+
+  uPanel.setChild(&text);
+
   lSplit.setChild(&uPanel, &dPanel);
 
   split.setChild(&lSplit, &rPanel);
