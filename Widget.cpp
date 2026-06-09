@@ -1,3 +1,4 @@
+#include <utility>
 #include "Widget.hpp"
 
 using namespace Widget;
@@ -10,6 +11,10 @@ BaseWidget::BaseWidget() {
 
 void BaseWidget::setChild(BaseWidget* widget) {
   this->child = widget;
+}
+
+std::pair<int, int> BaseWidget::getMinSize() {
+  return std::make_pair(min_x, min_y);
 }
 
 // Panel

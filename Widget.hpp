@@ -1,3 +1,4 @@
+#include <utility>
 #ifndef WIDGET_HPP
 #define WIDGET_HPP
 
@@ -18,8 +19,10 @@ namespace Widget {
       BaseWidget();
       virtual void render(int x0, int y0, int x1, int y1) = 0;
       void setChild(BaseWidget* widget);
+      std::pair<int, int> getMinSize();
     protected:
       BaseWidget* child;
+      int min_x, min_y = 32;
   };
 
   class Panel : public BaseWidget {
@@ -28,6 +31,7 @@ namespace Widget {
       void setColor(uint16_t p_color);
     protected:
       uint16_t color = CAT_BASE;
+      int min_x, min_y = 0;
   };
 
   class SplitBoxBase : public BaseWidget {
